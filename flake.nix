@@ -27,7 +27,12 @@
         packages.default = pkgs.hello;
 
         devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [cargo rust-analyzer];
+          buildInputs = with pkgs; [
+            cargo
+            rust-analyzer
+            cargo-shuttle
+            bacon
+          ];
         };
       };
       flake = {

@@ -1,3 +1,7 @@
+/target
+.shuttle*
+Secrets*.toml
+
 # direnv
 .direnv
 .envrc
