@@ -2186,8 +2186,7 @@ checksum = "f3cb5ba0dc43242ce17de99c180e96db90b235b8a9fdc9543c96d2209116bd9f"
 [[package]]
 name = "salvo"
 version = "0.75.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8b63e7c47aeb033e52b041987511db97a709582f693927b36d7b05622a2e7218"
+source = "git+https://github.com/Samyak2/salvo?branch=fix-deny-unknown#6d22a6f59ebb3bfa90168ced8d224e17c56c5a54"
 dependencies = [
  "salvo-jwt-auth",
  "salvo-oapi",
@@ -2199,8 +2198,7 @@ dependencies = [
 [[package]]
 name = "salvo-jwt-auth"
 version = "0.75.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "aba241760aa9b304d5798f5dbb27cd82d69bf671f5e143d7aab26837f218824b"
+source = "git+https://github.com/Samyak2/salvo?branch=fix-deny-unknown#6d22a6f59ebb3bfa90168ced8d224e17c56c5a54"
 dependencies = [
  "base64 0.22.1",
  "bytes",
@@ -2219,8 +2217,7 @@ dependencies = [
 [[package]]
 name = "salvo-oapi"
 version = "0.75.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f72c78b7ced7101915311eaba1218b8b81c37bafe4ba5fff0834fede986dae14"
+source = "git+https://github.com/Samyak2/salvo?branch=fix-deny-unknown#6d22a6f59ebb3bfa90168ced8d224e17c56c5a54"
 dependencies = [
  "base64 0.22.1",
  "bytes",
@@ -2252,8 +2249,7 @@ dependencies = [
 [[package]]
 name = "salvo-oapi-macros"
 version = "0.75.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "51def86c10d7ef45c9bacb154bd55ce0199c5cd4cdf6c3d9bd51c270b884fa01"
+source = "git+https://github.com/Samyak2/salvo?branch=fix-deny-unknown#6d22a6f59ebb3bfa90168ced8d224e17c56c5a54"
 dependencies = [
  "proc-macro-crate",
  "proc-macro2",
@@ -2267,8 +2263,7 @@ dependencies = [
 [[package]]
 name = "salvo-proxy"
 version = "0.75.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a665153bac2d2760b2d2192896137c329c91b4dacc8ced51d0319138653e2a92"
+source = "git+https://github.com/Samyak2/salvo?branch=fix-deny-unknown#6d22a6f59ebb3bfa90168ced8d224e17c56c5a54"
 dependencies = [
  "fastrand",
  "futures-util",
@@ -2285,8 +2280,7 @@ dependencies = [
 [[package]]
 name = "salvo-serde-util"
 version = "0.75.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4838b2ec4717e0a7ed117dc87b24ff3b829c187c352c45affdfc1085cfb355ab"
+source = "git+https://github.com/Samyak2/salvo?branch=fix-deny-unknown#6d22a6f59ebb3bfa90168ced8d224e17c56c5a54"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -2296,8 +2290,7 @@ dependencies = [
 [[package]]
 name = "salvo_core"
 version = "0.75.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a4e6f111881dd860f5641f1ceed4c2b193e8f35b142dfa44d45c9f6185dd9ede"
+source = "git+https://github.com/Samyak2/salvo?branch=fix-deny-unknown#6d22a6f59ebb3bfa90168ced8d224e17c56c5a54"
 dependencies = [
  "async-trait",
  "base64 0.22.1",
@@ -2341,8 +2334,7 @@ dependencies = [
 [[package]]
 name = "salvo_extra"
 version = "0.75.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3ca7de88224d880d87714fba2d5264e6a848715c4a8105eb0c22a38f5010b759"
+source = "git+https://github.com/Samyak2/salvo?branch=fix-deny-unknown#6d22a6f59ebb3bfa90168ced8d224e17c56c5a54"
 dependencies = [
  "base64 0.22.1",
  "etag",
@@ -2363,8 +2355,7 @@ dependencies = [
 [[package]]
 name = "salvo_macros"
 version = "0.75.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "372402867d8169d7271708c83deaa34090719e4ef368af6b614ded1fdbe710f6"
+source = "git+https://github.com/Samyak2/salvo?branch=fix-deny-unknown#6d22a6f59ebb3bfa90168ced8d224e17c56c5a54"
 dependencies = [
  "proc-macro-crate",
  "proc-macro2",
@@ -2577,7 +2568,7 @@ checksum = "0fda2ff0d084019ba4d7c6f371c95d8fd75ce3524c3cb8fb653a3023f6323e64"
 [[package]]
 name = "shuttle-api-client"
 version = "0.49.0"
-source = "git+https://github.com/Samyak2/shuttle?branch=bump-salvo#4d26dace4ab28c70a6dfe1d29fd7fa381ba7d1fc"
+source = "git+https://github.com/Samyak2/shuttle?branch=bump-salvo-samyak#c4acb337d741e3b35faf6dba9564f97afdf0d480"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -2599,7 +2590,7 @@ dependencies = [
 [[package]]
 name = "shuttle-codegen"
 version = "0.49.0"
-source = "git+https://github.com/Samyak2/shuttle?branch=bump-salvo#4d26dace4ab28c70a6dfe1d29fd7fa381ba7d1fc"
+source = "git+https://github.com/Samyak2/shuttle?branch=bump-salvo-samyak#c4acb337d741e3b35faf6dba9564f97afdf0d480"
 dependencies = [
  "proc-macro-error2",
  "proc-macro2",
@@ -2610,7 +2601,7 @@ dependencies = [
 [[package]]
 name = "shuttle-common"
 version = "0.49.0"
-source = "git+https://github.com/Samyak2/shuttle?branch=bump-salvo#4d26dace4ab28c70a6dfe1d29fd7fa381ba7d1fc"
+source = "git+https://github.com/Samyak2/shuttle?branch=bump-salvo-samyak#c4acb337d741e3b35faf6dba9564f97afdf0d480"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -2640,7 +2631,7 @@ dependencies = [
 [[package]]
 name = "shuttle-proto"
 version = "0.49.0"
-source = "git+https://github.com/Samyak2/shuttle?branch=bump-salvo#4d26dace4ab28c70a6dfe1d29fd7fa381ba7d1fc"
+source = "git+https://github.com/Samyak2/shuttle?branch=bump-salvo-samyak#c4acb337d741e3b35faf6dba9564f97afdf0d480"
 dependencies = [
  "futures-core",
  "prost",
@@ -2652,7 +2643,7 @@ dependencies = [
 [[package]]
 name = "shuttle-runtime"
 version = "0.49.0"
-source = "git+https://github.com/Samyak2/shuttle?branch=bump-salvo#4d26dace4ab28c70a6dfe1d29fd7fa381ba7d1fc"
+source = "git+https://github.com/Samyak2/shuttle?branch=bump-salvo-samyak#c4acb337d741e3b35faf6dba9564f97afdf0d480"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -2676,7 +2667,7 @@ dependencies = [
 [[package]]
 name = "shuttle-salvo"
 version = "0.49.0"
-source = "git+https://github.com/Samyak2/shuttle?branch=bump-salvo#4d26dace4ab28c70a6dfe1d29fd7fa381ba7d1fc"
+source = "git+https://github.com/Samyak2/shuttle?branch=bump-salvo-samyak#c4acb337d741e3b35faf6dba9564f97afdf0d480"
 dependencies = [
  "salvo",
  "shuttle-runtime",
@@ -2685,7 +2676,7 @@ dependencies = [
 [[package]]
 name = "shuttle-service"
 version = "0.49.0"
-source = "git+https://github.com/Samyak2/shuttle?branch=bump-salvo#4d26dace4ab28c70a6dfe1d29fd7fa381ba7d1fc"
+source = "git+https://github.com/Samyak2/shuttle?branch=bump-salvo-samyak#c4acb337d741e3b35faf6dba9564f97afdf0d480"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -3953,9 +3944,9 @@ checksum = "ea8b391c9a790b496184c29f7f93b9ed5b16abb306c05415b68bcc16e4d06432"
 
 [[package]]
 name = "xxhash-rust"
-version = "0.8.14"
+version = "0.8.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d7d48f1b18be023c95e7b75f481cac649d74be7c507ff4a407c55cfb957f7934"
+checksum = "fdd20c5420375476fbd4394763288da7eb0cc0b8c11deed431a91562af7335d3"
 
 [[package]]
 name = "yansi"
