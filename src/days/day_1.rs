@@ -3,7 +3,7 @@ use salvo::{
     prelude::*,
 };
 
-#[handler]
+#[endpoint]
 async fn seek(res: &mut Response) {
     res.status_code(StatusCode::FOUND);
     let mut headers = HeaderMap::new();

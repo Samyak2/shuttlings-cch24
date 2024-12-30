@@ -4,7 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-salvo = "0.63.0"
-shuttle-salvo = "0.49.0"
-shuttle-runtime = "0.49.0"
+salvo = { version = "0.75.0", features = ["oapi"] }
+shuttle-salvo = { version = "0.49.0", git = "https://github.com/Samyak2/shuttle", branch = "bump-salvo" }
+shuttle-runtime = { version = "0.49.0", git = "https://github.com/Samyak2/shuttle", branch = "bump-salvo" }
 tokio = "1.26.0"
+serde = "1.0.216"

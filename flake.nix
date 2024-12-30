@@ -31,7 +31,8 @@
             cargo
             rust-analyzer
             cargo-shuttle
-            bacon
+            watchexec
+            just
           ];
         };
       };
