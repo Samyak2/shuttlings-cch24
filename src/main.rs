@@ -1,4 +1,5 @@
 use salvo::prelude::*;
+use salvo::logging::Logger;
 
 use shuttlings_cch24::days::get_router;
 
@@ -15,7 +16,8 @@ async fn salvo() -> shuttle_salvo::ShuttleSalvo {
 
     let router = router
         .push(doc.into_router("/api-doc/openapi.json"))
-        .push(SwaggerUi::new("/api-doc/openapi.json").into_router("docs"));
+        .push(SwaggerUi::new("/api-doc/openapi.json").into_router("docs"))
+        .hoop(Logger::new());
 
     Ok(router.into())
 }
