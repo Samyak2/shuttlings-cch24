@@ -5,6 +5,7 @@ mod day_12;
 mod day_16;
 mod day_19;
 mod day_2;
+mod day_23;
 mod day_5;
 mod day_9;
 
@@ -17,4 +18,5 @@ pub fn get_router() -> Router {
         .push(day_12::get_router())
         .push(day_16::get_router())
         .push(day_19::get_router())
+        .push(day_23::get_router())
 }

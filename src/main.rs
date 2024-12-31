@@ -1,5 +1,6 @@
 use salvo::logging::Logger;
 use salvo::prelude::*;
+use salvo::serve_static::StaticDir;
 
 use shuttlings_cch24::days::get_router;
 use shuttlings_cch24::db::DB_POOL;
@@ -18,7 +19,10 @@ async fn salvo(#[shuttle_shared_db::Postgres] pool: sqlx::PgPool) -> shuttle_sal
 
     DB_POOL.set(pool).expect("could not set DB_POOL");
 
-    let router = Router::new().push(get_router()).get(hello_world);
+    let router = Router::new()
+        .push(get_router())
+        .get(hello_world)
+        .push(Router::with_path("/assets/<**path>").get(StaticDir::new(["assets/"])));
 
     let doc = OpenApi::new("Shuttle CCH 24", "0.0.1").merge_router(&router);
 

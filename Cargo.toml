@@ -8,6 +8,7 @@ salvo = { version = "0.75.0", features = [
     "oapi",
     "logging",
     "cookie",
+    "serve-static"
 ], git = "https://github.com/Samyak2/salvo", branch = "fix-deny-unknown" }
 shuttle-salvo = { version = "0.49.0", git = "https://github.com/Samyak2/shuttle", branch = "bump-salvo-samyak" }
 shuttle-runtime = { version = "0.49.0", git = "https://github.com/Samyak2/shuttle", branch = "bump-salvo-samyak" }
@@ -26,3 +27,4 @@ jsonwebtoken = "9.3.0"
 sqlx = { version = "0.8.2", features = ["postgres", "uuid", "chrono", "migrate"] }
 uuid = "1.11.0"
 chrono = "0.4.39"
+html-escape = "0.2.13"
