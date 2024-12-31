@@ -31,7 +31,7 @@
             cargo
             rust-analyzer
             cargo-shuttle
-            watchexec
+            cargo-watch
             just
           ];
         };

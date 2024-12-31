@@ -49,13 +49,13 @@ fn saturating_inc_atm(val: &AtomicU64, max: u64) -> u64 {
     }
 }
 
-#[derive(Debug, thiserror::Error)]
-enum Day9Error {
-    #[error("No milk available\n")]
-    NoMilk,
-
-    #[error("parse error: {0}")]
-    ParseError(#[from] ParseError),
+#[handler]
+async fn rate_limit_middleware(res: &mut Response) {
+    if saturating_dec_atm(&COUNTER) == 0 {
+        res.status_code(StatusCode::TOO_MANY_REQUESTS);
+        res.render(Text::Plain("No milk available\n"));
+        return;
+    }
 }
 
 #[derive(Debug, ToSchema)]
@@ -106,11 +106,6 @@ impl<'ex> Extractible<'ex> for MilkInput {
     async fn extract(
         req: &'ex mut Request,
     ) -> Result<Self, impl Writer + Send + std::fmt::Debug + 'static> {
-        // TODO: i don't like this being here. use a middleware.
-        if saturating_dec_atm(&COUNTER) == 0 {
-            return Err(Day9Error::NoMilk);
-        }
-
         match req.content_type() {
             Some(mime) if mime.essence_str() == "application/json" => {
                 let bruh: ConvertInput = req.parse_json::<ConvertInput>().await?;
@@ -141,13 +136,16 @@ impl EndpointArgRegister for MilkInput {
     }
 }
 
+#[derive(Debug, thiserror::Error)]
+enum Day9Error {
+    #[error("parse error: {0}")]
+    ParseError(#[from] ParseError),
+}
+
 #[async_trait]
 impl Writer for Day9Error {
     async fn write(self, _req: &mut Request, _depot: &mut Depot, res: &mut Response) {
         match self {
-            Self::NoMilk => {
-                res.status_code(StatusCode::TOO_MANY_REQUESTS);
-            }
             Self::ParseError(_) => {
                 res.status_code(StatusCode::BAD_REQUEST);
             }
@@ -211,28 +209,31 @@ impl EndpointOutRegister for MilkOutput {
     }
 }
 
+const GALLON_TO_LITER: f64 = 3.78541;
+const PINT_TO_LITRE: f64 = 0.568261;
+
 #[endpoint]
 async fn milk_route(inputs: MilkInput) -> Result<MilkOutput, Day9Error> {
     match inputs {
         MilkInput::Empty => Ok(MilkOutput::String("Milk withdrawn\n".to_owned())),
         MilkInput::Convert(ConvertInput::Liters(Liters { liters })) => {
             Ok(MilkOutput::Convert(ConvertInput::Gallons(Gallons {
-                gallons: liters * 0.264172,
+                gallons: liters / GALLON_TO_LITER,
             })))
         }
         MilkInput::Convert(ConvertInput::Gallons(Gallons { gallons })) => {
             Ok(MilkOutput::Convert(ConvertInput::Liters(Liters {
-                liters: gallons * 3.78541,
+                liters: gallons * GALLON_TO_LITER,
             })))
         }
         MilkInput::Convert(ConvertInput::Litres(Litres { litres })) => {
             Ok(MilkOutput::Convert(ConvertInput::Pints(Pints {
-                pints: litres * 1.75975,
+                pints: litres / PINT_TO_LITRE,
             })))
         }
         MilkInput::Convert(ConvertInput::Pints(Pints { pints })) => {
             Ok(MilkOutput::Convert(ConvertInput::Litres(Litres {
-                litres: pints * 0.568261,
+                litres: pints * PINT_TO_LITRE,
             })))
         }
     }
@@ -247,5 +248,7 @@ pub fn get_router() -> Router {
             println!("incremented to {}", COUNTER.load(Ordering::Relaxed));
         }
     });
-    Router::new().push(Router::with_path("/9/milk").post(milk_route))
+    Router::new()
+        .hoop(rate_limit_middleware)
+        .push(Router::with_path("/9/milk").post(milk_route))
 }
