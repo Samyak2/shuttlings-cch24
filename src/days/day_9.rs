@@ -245,7 +245,6 @@ pub fn get_router() -> Router {
         loop {
             interval.tick().await;
             saturating_inc_atm(&COUNTER, 5);
-            println!("incremented to {}", COUNTER.load(Ordering::Relaxed));
         }
     });
     Router::new()
