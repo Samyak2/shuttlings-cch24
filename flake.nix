@@ -33,6 +33,7 @@
             cargo-shuttle
             cargo-watch
             just
+            sqlx-cli
           ];
         };
       };

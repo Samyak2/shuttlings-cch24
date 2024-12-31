@@ -1,7 +1,8 @@
-use salvo::prelude::*;
 use salvo::logging::Logger;
+use salvo::prelude::*;
 
 use shuttlings_cch24::days::get_router;
+use shuttlings_cch24::db::DB_POOL;
 
 #[handler]
 async fn hello_world(res: &mut Response) {
@@ -9,7 +10,14 @@ async fn hello_world(res: &mut Response) {
 }
 
 #[shuttle_runtime::main]
-async fn salvo() -> shuttle_salvo::ShuttleSalvo {
+async fn salvo(#[shuttle_shared_db::Postgres] pool: sqlx::PgPool) -> shuttle_salvo::ShuttleSalvo {
+    sqlx::migrate!()
+        .run(&pool)
+        .await
+        .expect("Failed to run migrations");
+
+    DB_POOL.set(pool).expect("could not set DB_POOL");
+
     let router = Router::new().push(get_router()).get(hello_world);
 
     let doc = OpenApi::new("Shuttle CCH 24", "0.0.1").merge_router(&router);
