@@ -221,7 +221,7 @@ impl EndpointOutRegister for Board {
 
 static BOARD: RwLock<Board> = RwLock::new(Board::new());
 
-#[endpoint]
+#[endpoint(status_codes(200, 500))]
 async fn board_route() -> Result<Board, StatusCode> {
     Ok(BOARD
         .read()
@@ -229,7 +229,7 @@ async fn board_route() -> Result<Board, StatusCode> {
         .clone())
 }
 
-#[endpoint]
+#[endpoint(status_codes(200, 500))]
 async fn reset_route() -> Result<Board, StatusCode> {
     let mut board = BOARD
         .write()
