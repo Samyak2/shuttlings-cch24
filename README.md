@@ -1,5 +1,7 @@
 # My solutions to [Shuttle's Christmas Code Hunt 2024](https://www.shuttle.dev/cch)
 
+I used [Salvo](https://github.com/salvo-rs/salvo).
+
 Bonus tasks not included.
 
 ## Interesting implementations
